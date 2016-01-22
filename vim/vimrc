@@ -1,9 +1,9 @@
+set nocompatible
 let s:root = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 execute pathogen#infect(s:root . "/bundle/{}")
 if has("mac")
     execute pathogen#infect(s:root . "/mac_bundle/{}")
 endif
-set nocompatible
 set relativenumber
 set number
 set cursorline
@@ -16,6 +16,9 @@ set background=dark
 if has("gui")
     let g:solarized_menu=0
 endif 
+if hostname() ==# "Lexx.local"
+    let g:solarized_termcolors=256
+endif
 colorscheme solarized
 set expandtab
 set shiftwidth=4
