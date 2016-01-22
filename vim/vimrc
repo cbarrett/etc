@@ -1,4 +1,7 @@
 set nocompatible
+if &shell =~# 'fish$'
+    set shell=bash
+endif
 let s:root = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 execute pathogen#infect(s:root . "/bundle/{}")
 if has("mac")
