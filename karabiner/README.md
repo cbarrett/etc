@@ -1,6 +1,6 @@
 ## Usage
 
-This is the configuration file for [Karabiner](https://pqrs.org/osx/karabiner/index.html.en), which remaps keyboard events. Open the private.xml from within the app, and simply replace it with a symlink the file in this directory.
+This is the configuration file for [Karabiner](https://pqrs.org/osx/karabiner/index.html.en), which remaps keyboard events. Open the private.xml from within the app, and simply replace it with a symlink to file in this directory.
 
 ### Remap capslock
 This is largely based on [Brett Terpstra's article](http://brettterpstra.com/2012/12/08/a-useful-caps-lock-key/), but instead of Hyper I just want Control, as I've gotten quite used to using Capslock for that. Why go to all this trouble? Because tapping Capslock to switch into normal mode in vim is sweet.
