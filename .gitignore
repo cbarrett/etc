@@ -1,2 +1,2 @@
 *.swp
-/vim/bundle/ctrlp.vim/.netrwhist
+.netrwhist
