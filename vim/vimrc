@@ -26,3 +26,8 @@ colorscheme solarized
 set expandtab
 set shiftwidth=4
 set softtabstop=4
+" TODO move into a bundle
+autocmd FileType go let g:go_autodetect_gopath = 0
+autocmd FileType go set expandtab&
+autocmd FileType go set softtabstop&
+autocmd FileType go set tabstop=4
