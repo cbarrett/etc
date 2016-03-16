@@ -5,17 +5,17 @@ function fish_prompt --description 'Write out the prompt'
 		set -g __fish_prompt_normal (set_color normal)
 	end
 
-	# PWD
-	set_color $fish_color_cwd
-        echo -n (prompt_pwd)
-	set_color normal
-
         if not set -q __fish_prompt_hostname
             set -g __fish_prompt_hostname (hostname | cut -d . -f 1)
         end
 
+	# PWD
+	set_color $fish_color_cwd
+        echo -n (prompt_pwd)
+        set_color normal 
+
         if set -q SSH_CONNECTION
-            echo -n -s (set_color red) '@' (set_color yellow) "$__fish_prompt_hostname" (set_color normal) 
+            echo -n -s "@$__fish_prompt_hostname" 
         end
 
 	printf '%s ' (__fish_git_prompt)
