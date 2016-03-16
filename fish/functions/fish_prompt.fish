@@ -20,8 +20,8 @@ function fish_prompt --description 'Write out the prompt'
 
 	printf '%s ' (__fish_git_prompt)
 
-        if test "$USER" != "cbarrett"
-            echo -n -s "$USER"
+        if test (whoami) != "cbarrett"
+            echo -n (whoami)
         end
 	
         if not test $last_status -eq 0
