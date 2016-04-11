@@ -20,13 +20,18 @@ hs.application.watcher.new(function(_, event, app)
   end
 end):start()
 
--- Paste from the search pasteboard
+-- Paste from the find pasteboard
 hs.hotkey.bind({"cmd", "alt"}, "v", nil, function()
   local old = hs.pasteboard.getContents()
-  local find = hs.pasteboard.getContents("Apple CFPasteboard find")
-  hs.pasteboard.setContents(find)
+  pf()
   hs.eventtap.keyStroke({"cmd"}, "v")
   hs.timer.doAfter(0.1, function()
     hs.pasteboard.setContents(old)
   end)
-end) 
+end)
+
+-- Puts the find pasteboard on the regular pasteboard
+function pf()
+  local find = hs.pasteboard.getContents("Apple CFPasteboard find")
+  hs.pasteboard.setContents(find)
+end
