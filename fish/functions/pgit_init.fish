@@ -1,14 +1,9 @@
 function pgit_init --description "initialize git repo in guilt's patches directory"
-    set git_dir (git rev-parse --git-dir)
-    if not test $status -eq 0 -a -d $git_dir
+    set -l patches (pgit_dir)
+    if not test $status -eq 0
         return 1
     end
-    set patches $git_dir/patches
-    if not test -d $patches
-        echo "*** guilt not initialized" >&2
-        return 1
-    end
-    
+
     git init $patches
     # Used to track which patches are currently applied and what guards are active
     echo '**/status' > $patches/.gitignore
