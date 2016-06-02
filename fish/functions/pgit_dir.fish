@@ -1,4 +1,4 @@
-function pgit_dir --description "print's the location of guilt's patches repository"
+function --description "prints the location of guilt's patches repository" pgit_dir 
     set -l git_dir (git rev-parse --git-dir)
     if not test $status -eq 0 -a -d $git_dir
         return 1
