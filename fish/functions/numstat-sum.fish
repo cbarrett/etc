@@ -17,7 +17,7 @@ function numstat-sum
         minuses = sp; gsub(/ /, "-", minuses)
         maxsumdigits = int(log(maxsum) / log(10) + 1)  # for any n, the number of decimal digits in n = log base 10 of n rounded up
         scale = ('$COLUMNS' - maxname - 3 - maxsumdigits - 1) / maxsum  # numer is number of columns available, denom is our longest bar to show
-        sort = "sort -t \\| -k 1"  # this is how you pipe to an external process in awk, apparently
+        sort = "sort -t \\\| -k 1"  # this is how you pipe to an external process in awk, apparently
         for (n in F) {
             ps = int(A[n] * scale)
             ms = int(D[n] * scale) 
