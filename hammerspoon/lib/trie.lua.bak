@@ -1,0 +1,164 @@
+inspect = require '../vendor/inspect'
+
+trie = {}
+
+trie.empty = {}
+
+function trie.singleton(ch, v)
+  assert(ch and ch:len() == 1)
+  return setmetatable({
+    [ch] = {
+      value = v or true,
+      next = nil}
+    }, {
+      __index = trie.empty,
+      __newindex = function(t,k,v)
+        error("attempt to update read-only table")
+      end
+    })
+end
+
+function trie.empty:map(f)
+  local function search(self, accum)
+    local result = {}
+    for k, v in pairs(self) do
+      result[k] = {}
+      if v.next then
+        local a = {table.unpack(accum)}
+        a[#a+1] = k
+        result[k].next = search(v.next, a)
+      end
+      if v.value then
+        result[k].value = f(k, v.value)
+      end
+      return setmetatable(result, {
+        __index = self,
+        __newindex = function(t,k,v)
+          error("attempt to update read-only table")
+        end
+      })
+    end
+  end
+  return search(self, {})
+end
+
+function trie.empty:flatmap(f, op)
+  local function search(self, accum)
+    local result = {}
+    for k, v in pairs(self) do
+      local next
+      if v.next then
+        local a = {table.unpack(accum)}
+        a[#a+1] = k
+        next = search(v.next, a)
+      end
+      if v.value then
+        local newvalue = f(k, v.value)
+        if newvalue then
+          next = f(k, v.value):merge(next, op)
+        end
+      end
+      result[k] = { next = next }
+    end
+    return setmetatable(result, {
+      __index = self,
+      __newindex = function(t,k,v)
+        error("attempt to update read-only table")
+      end
+    })
+  end
+  return search(self, {})
+end
+
+function trie.empty:merge(other, op)
+  if not other or #other == 0 then
+    return self
+  end
+  op = op or function(v1, v2) return { v1, v2 } end
+  local result = {} 
+  for k, v in pairs(other) do
+    result[k] = {}
+    if self[k] then
+      if self[k].value and v.value then
+        result[k].value = op(self[k].value, v.value)
+      else
+        result[k].value = self[k].value or v.value
+      end
+      if self[k].next and v.next then
+        result[k].next = self[k].next:merge(v.next)
+      else
+        result[k].next = self[k].next or v.next
+      end
+    else
+      result[k] = v
+    end
+  end
+  return setmetatable(result, {
+    __index = self,
+    __newindex = function(t,k,v)
+      error("attempt to update read-only table")
+    end
+  })
+end
+
+function trie.empty:add(str, val)
+end
+
+setmetatable(trie.empty, {
+  __newindex = function(t,k,v)
+    error("attempt to update read-only table")
+  end
+})
+
+-- function trie.new()
+--   local self = {}
+--   self.__index = self
+--   function add(self, str)
+--     if not str then
+--       return self
+--     end
+--     local len = str:len() 
+--     if len == 0 then
+--       return self
+--     end
+--     local k = str:sub(1, 1)
+--     local t = trie.new()
+--     setmetatable(t, self)
+--     if len == 1 then
+--       if t[k] then t[k][1] = true
+--       else t[k] = {true, nil} end
+--     else
+--       local cont
+--       if t[k] then
+--         cont = t[k][2]
+--       else
+--         cont = {}
+--         t[k] = {false, cont}
+--       end
+--       local rest = str:sub(2, len)
+--       t[k][2] = add(cont, rest)
+--     end
+--     return t
+--   end
+--   function self:test(str)
+--     local len = str:len()
+--     if len == 0 then
+--       return true
+--     end
+--     local k = str:sub(1, 1)
+--     if len == 1 then
+--       return self[k] or self[k][1]
+--     else
+--       return (self[k] and self[k][2]
+--               and self[k][2]:test(str:sub(2, len)))
+--     end
+--   end
+--   return self
+-- end
+
+-- test = trie.new()
+-- test = test:add("hello")
+-- test2 = test:add("heaven")
+-- print(test:test("heaven"))
+-- -- print(inspect(test))
+-- -- print(inspect(test2))
