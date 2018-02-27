@@ -11,7 +11,10 @@ values."
   (dotspacemacs-template/layers)
   (setq-default
    dotspacemacs-configuration-layers
-   `(swift
+   `(
+     ruby
+     javascript
+     swift
      auto-completion
      syntax-checking
      ivy
