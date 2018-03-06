@@ -12,12 +12,14 @@ values."
   (setq-default
    dotspacemacs-configuration-layers
    `(
+     ocaml
      ruby
      javascript
+     typescript
      swift
      auto-completion
      syntax-checking
-     ivy
+     helm
      osx
      nixos
      python
@@ -56,7 +58,7 @@ values."
      spacemacs-light)
    dotspacemacs-default-font
    '("Base Mono Narrow OT"
-     :size 14
+     :size 18
      :weight ultralight
      :powerline-scale 1.2)
    ))
