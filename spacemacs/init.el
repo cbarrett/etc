@@ -19,7 +19,7 @@ values."
      swift
      auto-completion
      syntax-checking
-     helm
+     ivy
      osx
      nixos
      python
