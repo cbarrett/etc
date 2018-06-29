@@ -19,9 +19,6 @@ set background=dark
 if has("gui")
     let g:solarized_menu=0
 endif 
-if hostname() ==# "Lexx.local"
-    let g:solarized_termcolors=256
-endif
 colorscheme solarized
 set expandtab
 set shiftwidth=4
