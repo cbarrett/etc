@@ -27,6 +27,10 @@ values."
      emacs-lisp
      html
      agda
+     scheme
+     racket
+     fsharp
+     scala
      )
    dotspacemacs-excluded-packages
    '(
@@ -85,9 +89,5 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   ;; Tell emacs we'd very much like some crap now
   (load custom-file)
-  (spacemacs|defvar-company-backends swift-mode)
-  (spacemacs|add-company-hook swift-mode)
-  (use-package company-sourcekit
-    :defer t
-    :init
-    (push 'company-sourcekit company-backends-swift-mode)))
+  (add-to-list 'exec-path "/Applications/Racket v7.0/bin")
+  )
