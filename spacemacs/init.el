@@ -13,6 +13,8 @@ values."
    dotspacemacs-configuration-layers
    `(
      asciidoc
+     yaml
+     markdown
      ocaml
      ruby
      javascript
@@ -31,6 +33,8 @@ values."
      racket
      fsharp
      scala
+     git
+     github
      )
    dotspacemacs-excluded-packages
    '(
@@ -90,4 +94,8 @@ you should place your code here."
   ;; Tell emacs we'd very much like some crap now
   (load custom-file)
   (add-to-list 'exec-path "/Applications/Racket v7.0/bin")
-  )
+  (spacemacs|defvar-company-backends swift-mode)
+  (spacemacs|add-company-hook swift-mode)
+  (use-package company-sourcekit
+    :defer t
+    :config (push 'company-sourcekit company-backends-swift-mode)))
