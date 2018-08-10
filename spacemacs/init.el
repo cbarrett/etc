@@ -82,7 +82,9 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq-default
    ;; Tell emacs to take its crap and shove it here
    custom-file (expand-file-name "custom.el" dotspacemacs-directory)
-   ))
+   )
+  (push '("melpa-stable" . "stable.melpa.org/packages/") configuration-layer--elpa-archives)
+  (push '("ensime" . "melpa-stable") package-pinned-packages))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
