@@ -37,7 +37,7 @@ This function should only modify configuration layer settings."
      asciidoc
      yaml
      markdown
-     ocaml
+     ; ocaml
      ruby
      javascript
      typescript
@@ -47,10 +47,10 @@ This function should only modify configuration layer settings."
      ivy
      osx
      nixos
-     python
+     ; python
      emacs-lisp
      html
-     agda
+     ; agda
      scheme
      racket
      fsharp
@@ -393,7 +393,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil, advise quit functions to keep server open when quitting.
    ;; (default nil)
-   dotspacemacs-persistent-server t
+   dotspacemacs-persistent-server nil
 
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `rg', `ag', `pt', `ack' and `grep'.
@@ -455,8 +455,8 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq-default
    custom-file (expand-file-name "custom.el" dotspacemacs-directory))
-  (push '("melpa-stable" . "stable.melpa.org/packages/") configuration-layer--elpa-archives)
-  (push '("ensime" . "melpa-stable") package-pinned-packages)
+  ; (push '("melpa-stable" . "stable.melpa.org/packages/") configuration-layer--elpa-archives)
+  ; (push '("ensime" . "melpa-stable") package-pinned-packages)
   )
 
 (defun dotspacemacs/user-load ()
