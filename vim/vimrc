@@ -13,16 +13,15 @@ set cursorline
 syntax on
 filetype plugin indent on
 if has("gui_macvim")
-    set guifont=Menlo\ Regular:h12 
+    set guifont=Menlo\ Regular:h16 
 endif
-set background=dark
-if has("gui")
-    let g:solarized_menu=0
-endif 
-colorscheme solarized
+set background=light
+colorscheme Atelier_SeasideDark
+" colorscheme Atelier_PlateauDark
+" colorscheme Atelier_SulphurpoolDark
 set expandtab
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=2
+set softtabstop=2
 " TODO move into a bundle
 autocmd FileType go let g:go_autodetect_gopath = 0
 autocmd FileType go set expandtab&
