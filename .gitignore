@@ -1,2 +1,4 @@
 *.swp
 .netrwhist
+spacemacs/custom.el
+spacemacs/.spacemacs.env
