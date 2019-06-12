@@ -4,7 +4,6 @@
     with pkgs;
     [ 
       cmake
-      haskellPackages.Agda
       haskellPackages.cabal-install
       haskellPackages.ghc
       ispell
