@@ -34,32 +34,27 @@ This function should only modify configuration layer settings."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     asciidoc
      yaml
-     markdown
-     ; ocaml
-     ruby
-     javascript
-     typescript
-     swift
      auto-completion
-     syntax-checking
+     better-defaults
+     emacs-lisp
+     git
      ivy
+     markdown
+     multiple-cursors
+     org
+     ;; (shell :variables
+     ;;        shell-default-height 30
+     ;;        shell-default-position 'bottom)
+     spell-checking
+     syntax-checking
+     treemacs
+     version-control
      osx
      nixos
-     ; python
-     emacs-lisp
-     multiple-cursors
-     neotree
-     html
-     agda
-     scheme
-     racket
-     fsharp
-     scala
-     git
      github
-     org
+     haskell
+     swift
      )
 
    ;; List of additional packages that will be installed without being
@@ -75,13 +70,8 @@ This function should only modify configuration layer settings."
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages
-   '(
-     ;; https://github.com/syl20bnr/spacemacs/issues/8537#issuecomment-307056392
-     exec-path-from-shell
-     ;; https://github.com/syl20bnr/spacemacs/issues/9374#issuecomment-325238803
-     ;; org-projectile
-     )
+   dotspacemacs-excluded-packages '()
+
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and deletes any unused
