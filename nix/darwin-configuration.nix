@@ -3,20 +3,21 @@
   environment.systemPackages =
     with pkgs;
     [ 
-      bundix
+      cmake
       haskellPackages.Agda
-      jbuilder
-      nix-repl
-      nodePackages.node2nix
+      haskellPackages.cabal-install
+      haskellPackages.ghc
+      ispell
       nodejs-8_x
+      ninja
+      nixops
+      mercurial
       ripgrep
-      sbt
-      scala
       terraform
     ];
 
   environment.variables.NIX_REMOTE = "daemon";
-
+  launchd.daemons.nix-daemon.environment.OBJC_DISABLE_INITIALIZE_FORK_SAFETY = "YES";
   programs.bash.enable = true;
   programs.fish.enable = true;
   programs.fish.interactiveShellInit = ''
@@ -26,7 +27,7 @@
   services.activate-system.enable = true;
   services.nix-daemon.enable = true;
 
-  system.stateVersion = 3;
+  system.stateVersion = 4;
 
   nix.maxJobs = 2;
   nix.package = pkgs.nix;
