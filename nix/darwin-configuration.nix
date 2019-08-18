@@ -2,17 +2,18 @@
 {
   environment.systemPackages =
     with pkgs;
-    [ 
+    [
       cmake
-      haskellPackages.cabal-install
-      haskellPackages.ghc
       ispell
+      glslviewer
       nodejs-8_x
       ninja
       nixops
       mercurial
       ripgrep
       terraform
+      urweb
+      xz
     ];
 
   environment.variables.NIX_REMOTE = "daemon";
