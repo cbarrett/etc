@@ -26,7 +26,6 @@ This function should only modify configuration layer settings."
    ;; a layer lazily. (default t)
    dotspacemacs-ask-for-lazy-installation t
 
-   ;; If non-nil layers with lazy install support are lazy installed.
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path '("~/.spacemacs.d/")
@@ -139,8 +138,8 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-use-spacelpa nil
 
    ;; If non-nil then verify the signature for downloaded Spacelpa archives.
-   ;; (default nil)
-   dotspacemacs-verify-spacelpa-archives nil
+   ;; (default t)
+   dotspacemacs-verify-spacelpa-archives t
 
    ;; If non-nil then spacemacs will check for updates at startup
    ;; when the current branch is not `develop'. Note that checking for
@@ -485,6 +484,7 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (load custom-file)
   (setq org-default-notes-file "~/Library/Mobile Documents/com~apple~CloudDocs/TODO.org")
+  ;; for fish shell in term mode
   (add-hook 'term-mode-hook 'spacemacs/toggle-truncate-lines-on)
   )
 
