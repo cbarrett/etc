@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, options, pkgs, ... }:
 {
   environment.systemPackages =
     with pkgs;
@@ -10,9 +10,11 @@
       ninja
       nixops
       mercurial
+      packer
       ripgrep
       terraform
       urweb
+      vagrant
       xz
     ];
 
@@ -26,10 +28,12 @@
 
   services.activate-system.enable = true;
   services.nix-daemon.enable = true;
+  /* services.mysql.enable = true; */
 
   system.stateVersion = 4;
 
   nix.maxJobs = 2;
+  nix.nixPath = [ "darwin=/Users/cbarrett/Documents/Code/nix-darwin/default.nix" ] ++ options.nix.nixPath.default;
   nix.package = pkgs.nix;
   nix.trustedUsers = [ "root" "cbarrett" ];
 }
