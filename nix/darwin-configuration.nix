@@ -31,6 +31,9 @@
   services.nix-daemon.enable = true;
   /* services.mysql.enable = true; */
 
+  /* system.activationScripts.postActivation.text = '' */
+  /*   mkdir -m 775 -p ${config.services.mysql.dataDir} */
+  /* ''; */
   system.stateVersion = 4;
   nix.maxJobs = 2;
   nix.nixPath = [ "darwin=/Users/cbarrett/Documents/Code/nix-darwin/default.nix" ] ++ options.nix.nixPath.default;
