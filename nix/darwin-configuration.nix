@@ -7,7 +7,7 @@
       cmake
       ispell
       glslviewer
-      nodejs-8_x
+      nodejs
       ninja
       nixops
       mercurial
