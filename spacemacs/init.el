@@ -43,6 +43,7 @@ This function should only modify configuration layer settings."
      emacs-lisp
      git
      ivy
+     lsp
      markdown
      multiple-cursors
      org
@@ -56,11 +57,13 @@ This function should only modify configuration layer settings."
      osx
      nixos
      github
-     haskell
+     (haskell :variables haskell-completion-backend 'dante)
      swift
      tidal
      gpu
      urweb
+     (terraform :variables terraform-auto-format-on-save t)
+     ns-playgrounds
      )
 
    ;; List of additional packages that will be installed without being
