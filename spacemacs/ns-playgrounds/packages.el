@@ -65,5 +65,9 @@ Each entry is either:
   )
 (defun ns-playgrounds/post-init-ns-playgrounds ()
   (setq ob-swift-toolchain-dirs '("~/Library/Developer/Toolchains/"))
+  (defun ob-swift--toolchain-eval (body &optional toolchain)
+    "Evaluate BODY using optionally a Swift TOOLCHAIN"
+    (org-babel-eval (format "%s run --repl" (ob-swift--toolchain-path toolchain)) body)
+    )
   )
 ;;; packages.el ends here
