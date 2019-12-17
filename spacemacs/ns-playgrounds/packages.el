@@ -64,26 +64,27 @@ Each entry is either:
   (use-package ns-playgrounds)
   )
 (defun ns-playgrounds/post-init-ns-playgrounds ()
-  (setq ob-swift-toolchain-dirs '("~/Library/Developer/Toolchains/"))
-  (defun ob-swift--toolchain-eval (body &optional toolchain)
-    "Evaluate BODY using optionally a Swift TOOLCHAIN"
-    (org-babel-eval (format "%s run --repl" (ob-swift--toolchain-path toolchain)) body)
-    )
-  (defun ob-swift--prepare-session (session &optional toolchain)
-    "Prepare a REPL SESSION where Swift source blocks can be executed."
-    (let ((name (format "*ob-swift-%s*" session)))
-      (unless (and (get-process name)
-                   (process-live-p (get-process name)))
-        (let* ((swift-command-line (append (split-string
-                                            (ob-swift--toolchain-path toolchain))
-                                           '("run" "--repl")))
-               (process (with-current-buffer (get-buffer-create
-                                              name)
-                          (apply 'start-process name name
-                                 (car swift-command-line)
-                                 (cdr swift-command-line)))))
-          (set-process-filter process 'ob-swift--process-filter)
-          (ob-swift--wait "Welcome to Apple Swift"))))
-    )
+  (with-eval-after-load 'ob-swift
+    (setq ob-swift-toolchain-dirs '("~/Library/Developer/Toolchains/"))
+    (defun ob-swift--toolchain-eval (body &optional toolchain)
+      "Evaluate BODY using optionally a Swift TOOLCHAIN"
+      (org-babel-eval (format "%s run --repl" (ob-swift--toolchain-path toolchain)) body)
+      )
+    (defun ob-swift--prepare-session (session &optional toolchain)
+      "Prepare a REPL SESSION where Swift source blocks can be executed."
+      (let ((name (format "*ob-swift-%s*" session)))
+        (unless (and (get-process name)
+                     (process-live-p (get-process name)))
+          (let* ((swift-command-line (append (split-string
+                                              (ob-swift--toolchain-path toolchain))
+                                             '("run" "--repl")))
+                 (process (with-current-buffer (get-buffer-create
+                                                name)
+                            (apply 'start-process name name
+                                   (car swift-command-line)
+                                   (cdr swift-command-line)))))
+            (set-process-filter process 'ob-swift--process-filter)
+            (ob-swift--wait "Welcome to Apple Swift"))))
+      ))
   )
 ;;; packages.el ends here
