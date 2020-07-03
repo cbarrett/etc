@@ -58,9 +58,16 @@ Each entry is either:
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
 
-(defun tidal/pre-init-tidal ()
-  (setq shell-file-name "/bin/bash"))
 (defun tidal/init-tidal ()
   (use-package tidal
     :defer t))
+(defun tidal/post-init-tidal ()
+  (with-eval-after-load 'tidal
+    (let* ((output (shell-command-to-string "ghc-pkg field tidal data-dir"))
+           (first-line (car (split-string output "\n")))
+           (data-dir (string-trim (cadr (split-string first-line ":")))))
+        (setq tidal-boot-script-path
+              (concat data-dir "/BootTidal.hs")))
+    )
+  )
 ;;; packages.el ends here
