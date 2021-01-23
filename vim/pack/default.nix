@@ -1,4 +1,4 @@
-{ linkFarm, fetchFromGitHub, lib, runCommandLocal, stdenv }:
+{ linkFarm, fetchFromGitHub, lib, stdenv }:
 with lib.attrsets;
 let 
   isFetcherAttr = attr: _: attr != "optional" && attr != "fetch";
@@ -14,15 +14,11 @@ let
       optional = attrs.optional or false;
     };
   plugins = mapAttrsToList mkPlugin (import ./vim-plugins.nix);
-  env = {
-    startup = linkFarm "vim-plugins-startup" 
-      (builtins.filter (p: ! p.optional) plugins);
-    optional = linkFarm "vim-plugins-optional" 
-      (builtins.filter (p: p.optional) plugins);
-  };
 in
-runCommandLocal "vim-plugins" env ''
-    mkdir -p $out
-    ln -s $startup $out/start
-    ln -s $optional $out/opt
-  ''
+linkFarm "vim-plugins" [ {
+    name = "start";
+    path = linkFarm "vim-plugins-startup" (builtins.filter (p: ! p.optional) plugins);
+  } {
+    name = "opt";
+    path = linkFarm "vim-plugins-optional" (builtins.filter (p: p.optional) plugins);
+  } ]
