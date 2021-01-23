@@ -2,3 +2,4 @@
 .netrwhist
 spacemacs/custom.el
 spacemacs/.spacemacs.env
+vim/pack/result
