@@ -7,7 +7,7 @@ let
           if attrs.fetch == "github" then fetchFromGitHub
           else abort("unknown value for ${name}.fetch: ${attrs.fetch}");
         fetcherAttrs = 
-          ((filterAttrs isFetcherAttr attrs) // { inherit name; });
+          (filterAttrs isFetcherAttr attrs) // { inherit name; };
     in {
       inherit name;
       path = fetcher fetcherAttrs;
@@ -17,8 +17,10 @@ let
 in
 linkFarm "vim-plugins" [ {
     name = "start";
-    path = linkFarm "vim-plugins-startup" (builtins.filter (p: ! p.optional) plugins);
+    path = linkFarm "vim-plugins-startup" 
+      (builtins.filter (p: ! p.optional) plugins);
   } {
     name = "opt";
-    path = linkFarm "vim-plugins-optional" (builtins.filter (p: p.optional) plugins);
+    path = linkFarm "vim-plugins-optional" 
+      (builtins.filter (p: p.optional) plugins);
   } ]
