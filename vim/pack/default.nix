@@ -1,13 +1,12 @@
-{ linkFarm, fetchFromGitHub, lib, stdenv }:
+{ linkFarm, fetchFromGitHub, lib }:
 with lib.attrsets;
 let 
   isFetcherAttr = attr: _: attr != "optional" && attr != "fetch";
   mkPlugin = name: attrs:
-    let fetcher =
-          if attrs.fetch == "github" then fetchFromGitHub
-          else abort("unknown value for ${name}.fetch: ${attrs.fetch}");
-        fetcherAttrs = 
-          (filterAttrs isFetcherAttr attrs) // { inherit name; };
+    let 
+      fetcher = if attrs.fetch == "github" then fetchFromGitHub
+        else abort("unknown value for ${name}.fetch: ${attrs.fetch}");
+      fetcherAttrs = (filterAttrs isFetcherAttr attrs) // { inherit name; };
     in {
       inherit name;
       path = fetcher fetcherAttrs;
