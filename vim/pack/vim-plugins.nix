@@ -6,6 +6,13 @@
     rev = "7f74368d85bb521951dd58123349ce66b947d058";
     sha256 = "1y9n7ccg2shxdfz1c9r1lh004jjz15jd9mxx52ml05swnm3f3909";
   };
+  typescript-vim = {
+    fetch = "github";
+    owner = "leafgarland";
+    repo = "typescript-vim";
+    rev = "67e81e4292186889a1a519e1bf3a600d671237eb";
+    sha256 = "1mpp4n7qgz3yq4vka8h5sbngc14w5bzd9s9c2csbv9ds8w0lpi0g";
+  };
   vim-argumentative = { 
     fetch = "github";
     owner = "PeterRincker";
@@ -55,6 +62,13 @@
     rev = "fc682ce727d2545f08fbc3b5d227e23f723c9330";
     sha256 = "1ldq2bn9ikdn7sxvw02vkrhlxz6kfq35q3fww95kijfr7h6l8pvy";
   };
+  vim-javascript = {
+    fetch = "github";
+    owner = "pangloss";
+    repo = "vim-javascript";
+    rev = "3c90d0cc37bb8b78422f647e62587f498a5dd7bd";
+    sha256 = "16s3s883azfmwkr6hhnh8m7ibk6jm3vnvpmsagangxn0mz6ky533";
+  };
   vim-repeat = {
     fetch = "github";
     owner = "tpope";
@@ -68,6 +82,13 @@
     repo = "vim-surround";
     rev = "2d05440ad23f97a7874ebd9b5de3a0e65d25d85c";
     sha256 = "1b74l52a2yi9r5j6w3mcyhacdxajs3ndab1viw632nprqqsh8qb4";
+  };
+  vim-svelte = {
+    fetch = "github";
+    owner = "evanleck";
+    repo = "vim-svelte";
+    rev = "f63fa77d621b25092081cce815effd7fbc169113";
+    sha256 = "0j7j6ibrylv32y0vw002yayfg7xia59nm2952bhbwlkl6m2cwnz9";
   };
   vim-swift = {
     fetch = "github";
