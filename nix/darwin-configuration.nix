@@ -3,17 +3,15 @@
   environment.darwinConfig = "/Users/cbarrett/.local/etc/nix/darwin-configuration.nix";
   environment.systemPackages =
     with pkgs;
-    [
+    let nodejs = nodejs-14_x;
+    in [
       ispell
-      glslviewer
       nodejs
       mercurial
-      packer
       ripgrep
-      terraform
-      vagrant
-      wp-cli
+      terraform_0_13
       xz
+      (yarn.override { inherit nodejs; })
     ];
 
   environment.variables.NIX_REMOTE = "daemon";
