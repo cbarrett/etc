@@ -3,7 +3,7 @@
   environment.darwinConfig = "/Users/cbarrett/.local/etc/nix/darwin-configuration.nix";
   environment.systemPackages =
     with pkgs;
-    in [
+    [
       ispell
       nodejs
       mercurial
