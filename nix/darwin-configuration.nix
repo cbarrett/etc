@@ -27,8 +27,8 @@
 
   system.stateVersion = 4;
 
-  nix.maxJobs = 2;
   /* nix.nixPath = [ { darwin = "/Users/cbarrett/Documents/Code/nix-darwin/default.nix"; } ]; */
   nix.package = pkgs.nix;
-  nix.trustedUsers = [ "root" "cbarrett" ];
+  nix.settings.max-jobs = 2;
+  nix.settings.trusted-users = [ "root" "cbarrett" ];
 }
