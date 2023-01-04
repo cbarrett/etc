@@ -63,11 +63,15 @@ Each entry is either:
     :defer t))
 (defun tidal/post-init-tidal ()
   (with-eval-after-load 'tidal
-    (let* ((output (shell-command-to-string "ghc-pkg field tidal data-dir"))
+    (let* ((nix-root "/run/current-system/sw/bin")
+           (ghc-pkg (concat nix-root "/ghc-pkg"))
+           (output (shell-command-to-string
+                     (concat ghc-pkg " field tidal data-dir")))
            (first-line (car (split-string output "\n")))
            (data-dir (string-trim (cadr (split-string first-line ":")))))
         (setq tidal-boot-script-path
-              (concat data-dir "/BootTidal.hs")))
-    )
-  )
+              (concat data-dir "/BootTidal.hs"))
+        (setq tidal-interpreter
+              (concat nix-root "/ghci")))
+    ))
 ;;; packages.el ends here
