@@ -3,3 +3,5 @@
 spacemacs/custom.el
 spacemacs/.spacemacs.env
 vim/pack/result
+macports/PortIndex
+macports/PortIndex.quick
