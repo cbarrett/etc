@@ -8,7 +8,6 @@
       nodejs
       mercurial
       ripgrep
-      terraform_0_13
       xz
       yarn
     ];
@@ -24,6 +23,8 @@
   services.nix-daemon.enable = true;
   /* services.mysql.enable = true; */
   /* services.mysql.package = pkgs.mysql80; */
+  /* services.postgresql.enable = true; */
+  /* services.redis.enable = true; */
 
   system.stateVersion = 4;
 
