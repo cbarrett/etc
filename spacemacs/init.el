@@ -58,16 +58,17 @@ This function should only modify configuration layer settings."
      treemacs
      osx
      nixos
-     haskell
-     ;; swift
-     tidal
-     ;; gpu
-     ;; urweb
-     ;; (terraform :variables terraform-auto-format-on-save t)
-     ;; ns-playgrounds
-     ;; reasonml
+     ;; languages
      agda
+  ;; gpu
+     haskell
+  ;; ns-playgrounds
+  ;; swift
+     tidal
      (zig :variables zls-backend 'lsp)
+     ;; vim emulation
+     vinegar
+     vim-commentary
      )
 
 
@@ -277,7 +278,7 @@ It should only modify the values of Spacemacs settings."
    ;; a non-negative integer (pixel size), or a floating-point (point size).
    ;; Point size is recommended, because it's device independent. (default 10.0)
    dotspacemacs-default-font '("Base Mono Wide OT"
-                               :size 14
+                               :size 15.0
                                :weight ultra-light
                                :width normal)
 
@@ -597,6 +598,7 @@ before packages are loaded."
   ;; for fish shell in term mode
   (add-hook 'term-mode-hook 'spacemacs/toggle-truncate-lines-on)
   (setq lsp-haskell-process-path-hie "haskell-language-server-wrapper")
+  ;; flycheck-disabled-checkers is buffer-local
   (setq-default flycheck-disabled-checkers '(haskell-stack-ghc))
 )
 
