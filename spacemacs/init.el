@@ -51,7 +51,8 @@ This function should only modify configuration layer settings."
           org-enable-sticky-header t)
      (shell :variables
             shell-default-height 30
-            shell-default-position 'bottom)
+            shell-default-position 'bottom
+            shell-default-shell 'vterm)
      spell-checking
      syntax-checking
      version-control
@@ -62,13 +63,14 @@ This function should only modify configuration layer settings."
      agda
   ;; gpu
      haskell
+     raku
   ;; ns-playgrounds
   ;; swift
      tidal
      (zig :variables zls-backend 'lsp)
      ;; vim emulation
+     evil-commentary
      vinegar
-     vim-commentary
      )
 
 
@@ -596,7 +598,8 @@ before packages are loaded."
   (load custom-file)
   (setq org-default-notes-file "~/Library/Mobile Documents/com~apple~CloudDocs/TODO.org")
   ;; for fish shell in term mode
-  (add-hook 'term-mode-hook 'spacemacs/toggle-truncate-lines-on)
+  ;; commented out when switching to vterm
+  ; (add-hook 'term-mode-hook 'spacemacs/toggle-truncate-lines-on)
   (setq lsp-haskell-process-path-hie "haskell-language-server-wrapper")
   ;; flycheck-disabled-checkers is buffer-local
   (setq-default flycheck-disabled-checkers '(haskell-stack-ghc))
