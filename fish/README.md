@@ -1,5 +1,4 @@
 ## Usage
-In newer fish, simply symlink `$HOME/.local/share/fish/vendor_functions.d` to this directory.
-Otherwise, add the `functions` directory to `$fish_function_path`. 
+Symlink `$HOME/.config/fish/functions` to this directory, or add it to [https://fishshell.com/docs/3.6/language.html#syntax-function-autoloading](`$fish_function_path`).
 It's just that easy!
 
