@@ -11,7 +11,7 @@ if has("gui_macvim")
     set guifont=Menlo\ Regular:h16 
 endif
 set background=light
-colorscheme Atelier_SeasideDark
+" colorscheme Atelier_SeasideDark
 " colorscheme Atelier_PlateauDark
 " colorscheme Atelier_SulphurpoolDark
 set expandtab
