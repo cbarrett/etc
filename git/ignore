@@ -1,2 +1,3 @@
 *.swp
-cbarrett.xcuserdata/
+cbarrett.xcuserdatad/
+.DS_Store
