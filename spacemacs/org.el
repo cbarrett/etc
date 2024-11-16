@@ -42,7 +42,7 @@
 (defun my/org-babel-elisp-autofmt (&optional fill-column-override)
   (interactive "p")
   (when (string= (or (org-element-property :language (org-element-at-point)) "") "emacs-lisp")
-    (message "Formating Emacs Lisp src block...")
+    ;; (message "Formating Emacs Lisp src block...")
     (let ((beg (org-element-property :begin (org-element-at-point)))
           (end (org-element-property :end (org-element-at-point)))
           (original-fill-column (or fill-column-override fill-column))
