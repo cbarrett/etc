@@ -66,11 +66,12 @@
           ;; Add one surrounding paren (required) and another (for indentation)
           (insert "((" code "))")
           (goto-char (point-min))
-          (elisp-autofmt-region (point-min) (point-max))
-          (setq formatted-code (buffer-string))
-          ;; Remove the surrounding parentheses, add leading spaces for first line
-          (setq formatted-code (concat "  " (substring formatted-code 2 -2))))
-        ;; (message "Formatted code:\n%s" formatted-code))
+          (if (not (elisp-autofmt-region (point-min) (point-max)))
+              (setq formatted-code code)
+            (setq formatted-code (buffer-string))
+            ;; Remove the surrounding parentheses, add leading spaces for first line
+            (setq formatted-code (concat "  " (substring formatted-code 2 -2)))))
+        ;; (message "Formatted code:\n%s" formatted-code)
         (save-excursion
           (goto-char beg)
           (delete-region beg end)
