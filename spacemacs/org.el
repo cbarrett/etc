@@ -1,10 +1,10 @@
 (defun my/org-babel-execute-included-src-blocks ()
-  "Find and execute code blocks included via #+INCLUDE."
+  "Find and execute code blocks included via #+EVAL_FILE."
   (interactive)
   (save-excursion
     (goto-char (point-min))
-    ;; Look for `#+INCLUDE:` directive
-    (while (re-search-forward "^\\s-*#\\+INCLUDE: \"\\([^\"]+\\)\\(?:::\\([^ \"]+\\)?\\)\"" nil t)
+    ;; Look for `#+EVAL_FILE:` directive
+    (while (re-search-forward "^\\s-*#\\+EVAL_FILE: \"\\([^\"]+\\)\\(?:::\\([^ \"]+\\)?\\)\"" nil t)
       ;; Extract and trim the file and optional search term
       (let* ((file (match-string 1))
              (search-term (match-string 2)))
