@@ -23,7 +23,7 @@ in
       ]))
       unstable.bun
       cmake
-      doctl
+      unstable.doctl
       (haskellPackages.ghcWithPackages (p: [p.tidal]))
       inkscape
       ispell
@@ -52,7 +52,6 @@ in
     set fish_function_path /Users/cbarrett/.local/etc/fish/functions $fish_function_path
   '';
 
-  services.activate-system.enable = true;
   services.nix-daemon.enable = true;
   /* services.mysql.enable = true; */
   /* services.mysql.package = pkgs.mysql80; */
