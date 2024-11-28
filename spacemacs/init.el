@@ -65,6 +65,9 @@ This function should only modify configuration layer settings."
      ;; gpu
      graphviz
      haskell
+     html
+     javascript
+     json
      ;; ocaml
      ;; raku
      zig
@@ -260,7 +263,9 @@ It should only modify the values of Spacemacs settings."
                          sanityinc-solarized-dark
                          sanityinc-solarized-light
                          spacemacs-dark
-                         spacemacs-light)
+                         spacemacs-light
+                         tao-yang
+                         tao-yin)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
@@ -616,6 +621,7 @@ This function is called only while dumping Spacemacs configuration. You can
 `require' or `load' the libraries of your choice that will be included in the
 dump."
   )
+
 
 (defun dotspacemacs/user-config ()
   "Configuration for user code:

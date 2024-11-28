@@ -24,7 +24,7 @@ in
       unstable.bun
       cmake
       unstable.doctl
-      (haskellPackages.ghcWithPackages (p: [p.tidal]))
+      # (haskellPackages.ghcWithPackages (p: [p.tidal p.hakyll]))
       inkscape
       ispell
       imgcat
