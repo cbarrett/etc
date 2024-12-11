@@ -68,10 +68,9 @@ This function should only modify configuration layer settings."
      html
      javascript
      json
+     ;; ns-playgrounds
      ;; ocaml
      ;; raku
-     zig
-     ;; ns-playgrounds
      ;; swift
      tidal
      ;;(zig :variables zls-backend 'lsp)
@@ -649,6 +648,7 @@ before packages are loaded."
   ;;(setq lsp-haskell-process-path-hie "haskell-language-server-wrapper")
   ;; flycheck-disabled-checkers is buffer-local
   (setq-default flycheck-disabled-checkers '(haskell-stack-ghc))
+  ;; todo load add xscheme (for Hanson and Sussman book)
   )
 
 
