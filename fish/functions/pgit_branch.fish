@@ -1,4 +1,4 @@
-function --description "prints the location of the guilt repo subdirectory for the current branch" pgit_branch
+function pgit_branch --description "prints the location of the guilt repo subdirectory for the current branch" 
     set -l patches (pgit_dir)
     if not test $status -eq 0
         return 1
