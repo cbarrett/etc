@@ -36,7 +36,7 @@ end
 
 slash = hs.hotkey.modal.new({"cmd"}, "\\", nil)
 function slash:entered()
-    log.df("will cancel cmd-slash mode in %f seconds", modeTimeoutSeconds)
+  log.df("will cancel cmd-slash mode in %f seconds", modeTimeoutSeconds)
   setCurrentMode(slash)
 end
 function slash:exited()
