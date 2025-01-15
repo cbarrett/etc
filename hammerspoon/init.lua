@@ -30,7 +30,7 @@ function submode(m, mods, key)
     setCurrentMode(m)
     m:exit()
   end
-  m:bind(mode, key, function () n:enter() end, nil, nil)
+  m:bind(mods, key, function () n:enter() end, nil, nil)
   return n
 end
 
