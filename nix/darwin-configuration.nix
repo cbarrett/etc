@@ -22,6 +22,7 @@ in
 */
       ]))
       unstable.bun
+      cachix
       cmake
       unstable.doctl
       # (haskellPackages.ghcWithPackages (p: [p.tidal p.hakyll]))
@@ -37,14 +38,27 @@ in
       # ocamlformat
       ripgrep
       streamlink
-      xz
       update-nix-fetchgit
-      # unstable.yarn-berry
+      uv
+      xz
     ];
   environment.variables.EDITOR = "/usr/bin/vim";
   environment.variables.NIX_REMOTE = "daemon";
 
-  ids.uids.nixbld = 300;
+  imports = [
+    (let
+      module = fetchTarball {
+        name = "source";
+        url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-3.tar.gz";
+        sha256 = "sha256-Yg/5ijDktWPsAXivL3V1KLx9pp9auIsiEZR5rBgOAA8";
+      };
+        lixSrc = fetchTarball {
+          name = "source";
+          url = "https://git.lix.systems/lix-project/lix/archive/2.91.1.tar.gz";
+          sha256 = "sha256-hiGtfzxFkDc9TSYsb96Whg0vnqBVV7CUxyscZNhed0U";
+        };
+    in import "${module}/module.nix" { lix = lixSrc; })
+  ];
 
   programs.zsh.enable = true;
   programs.fish.enable = true;
@@ -63,10 +77,11 @@ in
 
   # not needed with flakes
   /* nix.nixPath = [ "darwin=/Users/cbarrett/Documents/Code/nix-darwin/default.nix" ]; */
-  nix.package = pkgs.nix;
-  nix.settings.max-jobs = 2;
-  nix.settings.trusted-users = [ "root" "cbarrett" ];
   nix.settings.experimental-features = "nix-command";
+  nix.settings.max-jobs = 2;
+  nix.settings.substituters = [ "https://nix-community.cachix.org" ];
+  nix.settings.trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
+  nix.settings.trusted-users = [ "root" "cbarrett" ];
 
   nixpkgs.hostPlatform = "x86_64-darwin";
 
